@@ -1,0 +1,33 @@
+Finding the imbalance of the bad method
+=======================================
+
+Using the gen_samples.py script, I generated 10,000 samples of
+permutations for N=20, for both types of algorithms. The good algorithm
+is normally distributed, but the bad distribution has an interesting
+oscillation. 
+
+The most favoured values are a forward-shift by a small amount, and the
+least favourable is no shift at all. For instance, the probability that
+element 4 stays in its place is about 33% smaller (eyeballed) than the
+probability that it would be in position 5. This pattern holds for every
+value. 
+
+In turn, it was far less likely for a low element to be placed at a very
+high position. For example, the probability that element 0 would end at
+position 1 is roughly twice as much as for being in position 17.
+
+This seemed to be most dramatic at lower values- element 0 being at
+position 1 is extremely likely, while element 18 being at position 19 is
+much less so.
+
+See sample.txt for relative and regular histograms showing this
+discrepancy.
+
+Designing fairness tests
+========================
+
+This is basically just measuring the normalness of the data set, and so
+is probably easiest with delta-squared type work. The threshold should
+be some small proportion and anything with a higher delta squared should
+be considered an unfair sample.
+

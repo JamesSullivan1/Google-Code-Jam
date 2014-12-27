@@ -1,0 +1,30 @@
+Algorithm
+=========
+
+For each run of a specific character, match up the number of occurrences
+of it in the cheapest way possible, and then move on to tne next run.
+If at any point a character appears in one string that is not next in
+the others, then we abort.
+
+Example:
+
+aab
+abb
+
+v      v      v     v     v
+aab    ab    ab    ab   ab
+abb    abb   abb   ab   ab
+  Shrink      Shrink     Done  
+
+aab
+abc
+
+v      v      v      v
+aab    ab    ab    ab
+abc    abc   abc   abc
+  Shrink           FAIL
+
+Matching all runs cheaply can be determined by finding the most common
+run length and setting all other runs to it. The cost of this is the sum
+of the differences from this most common run length.
+

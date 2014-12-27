@@ -1,0 +1,20 @@
+Legal patterns
+==============
+
+Simplify to 2 bit unsigned integers.
+
+00 <-   (00,00),(00,01),(00,10),(00,11),
+        (01,00),(10,00),(11,00),(01,10),(10,01)
+
+01 <-   (01,01),(11,01),(01,11)
+
+10 <-   (10,10),(11,10),(10,11)
+
+11 <-   (11)
+
+
+General algorithm- fix the 1 in each position, and then iterate through
+all combinations of the other bits that are _not_ (1,1). (ie, (0,0),
+(0,1), (1,0) to enumerate all the possibilities. The complexity is
+O(A * B), which isn't too bad (though probably not optimal).
+

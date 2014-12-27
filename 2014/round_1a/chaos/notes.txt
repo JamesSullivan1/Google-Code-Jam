@@ -1,0 +1,14 @@
+First intuition is a basic bit-by-bit iteration. We check the value for
+each device/outlet pair at bit i; if they match, flip, if they do not
+match, don't flip. Limit our flips to exactly one per bit; if we need a
+second one, then abort and fail (since that means there are two
+incompatible pairs).
+
+Oops, this doesn't work! We also need to consider the rearranging of
+pairs. This now seems like a dynamic programming problem.
+
+The problem is to figure out the optimal number of switches required
+to charge all L bits for all N devices. The subproblem could be to
+charge the first I bits for all N devices, for 1 <= I <= L. If we fail
+at any step, then we have to backtrack.
+

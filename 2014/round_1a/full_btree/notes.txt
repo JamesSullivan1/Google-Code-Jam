@@ -1,0 +1,23 @@
+Number of connections
+=====================
+
+In a full binary tree, each vertex has exactly 1 or 3 connections,
+except a single root with 2 connections.
+
+We can only remove leaves, ie vertices with 1 connection (their parent).
+
+For each node with 2 connections, pretend that it is the root, and try
+to trim its tree into a full binary tree. 
+
+For trimming, we proceed recursively. For a given node, there are 3 
+cases.
+
+1) The node is a leaf (1 connection).
+    Do not trim. Return 0.
+2) The node is a connector (2 connections) distinct from the root.
+    Trim it's child's subtree, returning that size.
+3) The node is full.
+    Return the number of trims needed in the left and right subtrees.
+
+Return the minimum for all root selections.
+
